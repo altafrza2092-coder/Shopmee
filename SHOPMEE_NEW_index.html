@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHOPMEE | Find Compare Save</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f8fc;color:#171923}a{text-decoration:none}.wrap{max-width:1150px;margin:auto;padding:0 20px}
+header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:5}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:27px;font-weight:900}.logo b{color:#635bff}.links{display:flex;gap:22px;font-size:14px;color:#555}.btn{background:#635bff;color:#fff;padding:12px 18px;border-radius:10px;font-weight:bold;border:0}
+.hero{padding:65px 0;background:linear-gradient(135deg,#eef0ff,#fff)}.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}.pill{display:inline-block;background:#e6e4ff;color:#5148d7;padding:8px 13px;border-radius:30px;font-size:13px;font-weight:bold}
+h1{font-size:52px;line-height:1.05;margin:18px 0}.purple{color:#635bff}.hero p{font-size:18px;color:#626776;line-height:1.6}.search{display:flex;background:#fff;padding:8px;border:1px solid #ddd;border-radius:14px;margin-top:25px}.search input{flex:1;border:0;outline:0;padding:12px;font-size:15px}.mock{background:#fff;border:1px solid #e5e5ed;border-radius:22px;padding:22px;box-shadow:0 15px 40px #0001}.mockItem{display:flex;align-items:center;gap:14px;border:1px solid #eee;border-radius:14px;padding:13px;margin:10px 0}.emoji{width:58px;height:58px;background:#f0f1f6;border-radius:12px;display:grid;place-items:center;font-size:28px}
+section{padding:58px 0}.title{text-align:center;margin-bottom:28px}.title h2{font-size:32px;margin:0 0 8px}.title p{color:#707481}.cats{display:flex;gap:12px;overflow:auto}.cat{background:#fff;border:1px solid #e5e6ec;padding:14px 19px;border-radius:12px;white-space:nowrap;font-weight:bold}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #e5e6ec;border-radius:17px;overflow:hidden}.pic{height:175px;background:#f0f1f5;display:grid;place-items:center;font-size:65px}.body{padding:16px}.tag{font-size:11px;background:#eeecff;color:#554bd5;padding:5px 8px;border-radius:7px;font-weight:bold}.body h3{font-size:16px;min-height:40px;margin:12px 0 7px}.rating{font-size:13px;color:#d99400}.from{font-size:12px;color:#777;margin-top:9px}.buy{display:block;text-align:center;background:#171923;color:#fff;padding:11px;border-radius:9px;margin-top:12px;font-weight:bold}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;border:1px solid #e5e6ec;border-radius:16px;padding:24px}.feature div{font-size:30px}.feature h3{margin-bottom:7px}.feature p{color:#686d79;line-height:1.5;font-size:14px}.cta{background:#171923;color:#fff;text-align:center;border-radius:24px;padding:45px}.cta p{color:#c8cad2;margin-bottom:22px}footer{background:#fff;border-top:1px solid #eee;padding:30px 0;color:#777;font-size:13px}
+@media(max-width:850px){.heroGrid{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.links{display:none}h1{font-size:42px}}
+@media(max-width:500px){h1{font-size:36px}.hero{padding:45px 0}.products{gap:10px}.pic{height:145px;font-size:52px}.body{padding:12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#">SHOP<b>MEE</b></a>
+<nav class="links"><a href="#trending">Trending</a><a href="#categories">Categories</a><a href="#deals">Best Deals</a><a href="#how">How it works</a></nav>
+<a class="btn" href="#trending">Explore Deals</a>
+</div></header>
+
+<section class="hero"><div class="wrap heroGrid">
+<div>
+<span class="pill">🔥 Discover trending products</span>
+<h1>Find it. <span class="purple">Compare it.</span> Save money.</h1>
+<p>SHOPMEE helps you discover popular products, compare marketplace deals and choose where you want to buy.</p>
+<div class="search"><input id="search" placeholder="Search products, e.g. earbuds..."><button class="btn" onclick="searchProducts()">Search</button></div>
+</div>
+<div class="mock">
+<strong>🔥 Today's Best Deals</strong>
+<div class="mockItem"><div class="emoji">🎧</div><div><b>Wireless Earbuds</b><br>From ₹799</div></div>
+<div class="mockItem"><div class="emoji">⌚</div><div><b>Smart Watch</b><br>From ₹1,299</div></div>
+<div class="mockItem"><div class="emoji">🎒</div><div><b>Travel Backpack</b><br>From ₹599</div></div>
+</div>
+</div></section>
+
+<section id="categories"><div class="wrap"><div class="title"><h2>Shop by Category</h2><p>Explore products you love.</p></div>
+<div class="cats"><div class="cat">📱 Electronics</div><div class="cat">👕 Fashion</div><div class="cat">💄 Beauty</div><div class="cat">🏠 Home & Kitchen</div><div class="cat">🎮 Gaming</div><div class="cat">🎒 Accessories</div></div>
+</div></section>
+
+<section id="trending"><div class="wrap"><div class="title"><h2>🔥 Trending Products</h2><p>Popular products worth checking out.</p></div><div class="products" id="grid"></div></div></section>
+
+<section id="deals"><div class="wrap"><div class="title"><h2>💰 Best Deals</h2><p>Compare before you buy.</p></div>
+<div class="features"><div class="feature"><div>⚖️</div><h3>Price Comparison</h3><p>Compare available marketplace offers in one place.</p></div><div class="feature"><div>🔥</div><h3>Trending Products</h3><p>Discover popular products and deal-worthy picks.</p></div><div class="feature"><div>🔗</div><h3>Easy Shopping</h3><p>Choose a marketplace and continue to the product.</p></div></div></div></section>
+
+<section id="how"><div class="wrap"><div class="cta"><h2>How SHOPMEE works</h2><p>Search → Compare → Choose marketplace → Buy</p><a class="btn" href="#trending">Start Exploring</a></div></div></section>
+
+<footer><div class="wrap"><b>SHOPMEE</b> — Find. Compare. Save. &nbsp; © 2026 SHOPMEE</div></footer>
+
+<script>
+const data=[
+["🎧","Wireless Earbuds","₹799","Trending","⭐ 4.4"],
+["⌚","Smart Watch","₹1,299","Hot Deal","⭐ 4.3"],
+["🎒","Travel Backpack","₹599","Popular","⭐ 4.5"],
+["🔊","Bluetooth Speaker","₹899","Best Seller","⭐ 4.2"],
+["⌨️","Wireless Keyboard","₹699","Trending","⭐ 4.4"],
+["📱","Phone Accessories Kit","₹399","Value Pick","⭐ 4.1"],
+["💡","Smart LED Light","₹499","Hot Deal","⭐ 4.3"],
+["🎮","Gaming Controller","₹1,499","Gaming","⭐ 4.5"]
+];
+function render(list=data){
+document.getElementById("grid").innerHTML=list.map(p=>`
+<div class="card"><div class="pic">${p[0]}</div><div class="body">
+<span class="tag">${p[3]}</span><h3>${p[1]}</h3><div class="rating">${p[4]}</div>
+<div class="from">Compare marketplace prices</div>
+<b style="font-size:20px">${p[2]}</b>
+<a class="buy" href="#" onclick="demo(event,'${p[1]}')">View Deal</a>
+</div></div>`).join("");
+}
+function searchProducts(){
+let q=document.getElementById("search").value.toLowerCase().trim();
+render(q?data.filter(x=>x[1].toLowerCase().includes(q)):data);
+document.getElementById("trending").scrollIntoView({behavior:"smooth"});
+}
+function demo(e,name){
+e.preventDefault();
+alert("Demo product: "+name+"\n\nAmazon / Flipkart / other affiliate links will be connected after API and affiliate setup.");
+}
+document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")searchProducts()});
+render();
+</script>
+</body>
+</html>
